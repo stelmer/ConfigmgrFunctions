@@ -51,25 +51,11 @@ Function Get-Configmgr2107HttpsDownloadBugFix {
                 
                 if ('Ssl' -eq "$($smspkg.'system.webServer'.security.access.sslFlags)") { 
                 
-                    # Write-Output 'Compliant'   
+                    Write-Output 'Compliant'   
                 
                 } Else {
                 
                     Write-Output "$($env:COMPUTERNAME): Non-Compliant"  
-                    Return
-                
-                }
-
-                [xml]$smssig = c:\windows\system32\inetsrv\appcmd.exe list config 'Default Web Site/SMS_DP_SMSSIG$' -section:system.webServer/security/access
-                Write-Verbose "SMS_DP_SMSSIG$ SSL Config = '$($smssig.'system.webServer'.security.access.sslFlags)'"
-                
-                if ('Ssl' -eq "$($smssig.'system.webServer'.security.access.sslFlags)") { 
-                
-                    Write-Output "$($env:COMPUTERNAME): Compliant"    
-                
-                } Else {
-                
-                    Write-Output "$($env:COMPUTERNAME): Non-Compliant"   
                 
                 }
 

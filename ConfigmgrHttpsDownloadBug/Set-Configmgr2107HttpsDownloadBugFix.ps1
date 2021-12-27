@@ -52,7 +52,7 @@ Function Set-Configmgr2107HttpsDownloadBugFix {
                 
                 if ('Ssl' -eq "$($smspkg.'system.webServer'.security.access.sslFlags)") { 
                     
-                    # Write-Output 'Compliant'   
+                    Write-Output 'Compliant'   
                 
                 } Else {
                     
@@ -68,29 +68,6 @@ Function Set-Configmgr2107HttpsDownloadBugFix {
 
                     }
 
-                }
-
-                [xml]$smssig = c:\windows\system32\inetsrv\appcmd.exe list config 'Default Web Site/SMS_DP_SMSSIG$' -section:system.webServer/security/access
-                Write-Output "SMS_DP_SMSSIG$ SSL Config = '$($smssig.'system.webServer'.security.access.sslFlags)'"
-                
-                if ('Ssl' -eq "$($smssig.'system.webServer'.security.access.sslFlags)") { 
-                
-                    Write-Output "$($env:COMPUTERNAME): Compliant"   
-                
-                } Else {
-                
-                    Write-Output 'Non-Compliant, remediating...'  
-                    
-                    Try {
-
-                        c:\windows\system32\inetsrv\appcmd.exe set config 'Default Web Site/SMS_DP_SMSSIG$' -section:system.webServer/security/access /sslFlags:"Ssl" /commit:apphost
-
-                    } catch {
-                        
-                        Write-warning 'An error occurred updating the Default Web Site/SMS_DP_SMSSIG$ SSL config'
-
-                    }
-                
                 }
 
             }
