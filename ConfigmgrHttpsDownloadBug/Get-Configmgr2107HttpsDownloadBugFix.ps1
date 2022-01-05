@@ -11,7 +11,7 @@ Function Get-Configmgr2107HttpsDownloadBugFix {
   Custom ConfigMgr Powershell Functions
 
 .DESCRIPTION
-  Gets the SSL IIS config on smspkg and smssig iis dirs.
+  Gets the SSL IIS config on the smspkg iis dir.
 
 .PARAMETER ComputerName
     The computer name of the device to check.
