@@ -11,7 +11,7 @@ Function Set-Configmgr2107HttpsDownloadBugFix {
   Custom ConfigMgr Powershell Functions
 
 .DESCRIPTION
-  Sets IIS config on smspkg and smssig iis dirs to ignore client auth certs.
+  Sets IIS config on the smspkg iis dirs to ignore client auth certs.
 
 .PARAMETER ComputerName
     The computer name of the device to check.
